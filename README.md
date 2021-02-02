@@ -1,4 +1,11 @@
-# vue-workout-log
+# Workout Log
+
+## Featured
+
++ Vue / Vuex / Vuetify
++ Tailwind CSS
++ Sass
++ Pug
 
 ## Project setup
 ```
