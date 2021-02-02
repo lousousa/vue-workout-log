@@ -5,22 +5,22 @@ const vuexLocalStorage = new VuexPersist({
 
 export default {
     state: {
-        cart: []
+        logs: []
     },
     mutations: {
-        addToCart (state, payload) {
-            state.cart.push(payload)
+        addToLogs (state, payload) {
+            state.logs.push(payload)
         },
-        removeFromCart (state, idx) {
-            state.cart.splice(idx, 1)
+        removeFromLogs (state, idx) {
+            state.logs.splice(idx, 1)
         },
-        clearCart (state) {
-            state.cart = []
+        clearLogs (state) {
+            state.logs = []
         }
     },
     getters: {
-        cart: state => {
-            return state.cart
+        logs: state => {
+            return state.logs
         }
     },
     plugins: [ vuexLocalStorage.plugin ]
