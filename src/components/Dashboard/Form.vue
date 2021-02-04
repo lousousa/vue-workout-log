@@ -7,21 +7,21 @@
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.date.$error }") Date:
                     DatePicker(v-model='$v.model.date.$model' locale='en')
                         template(v-slot="{ inputValue, inputEvents }")
-                            input.w-full.p-2.border.rounded.text-xs(
+                            input.w-full.p-2.border.rounded.text-xs.text-gray-600(
                                 class='focus:outline-none focus:border-blue-300'
                                 :class="{ 'border-red-300 ': submitted && $v.model.date.$error }"
                                 :value='inputValue'
                                 v-on='inputEvents')
                 .p-1(class='w-1/3 md:w-1/4')
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.activity.$error }") Activity:
-                    select.border.w-full.rounded.p-2.text-xs.cursor-pointer(
+                    select.border.w-full.rounded.p-2.text-xs.cursor-pointer.text-gray-600(
                         v-model='$v.model.activity.$model'
                         class='focus:outline-none focus:border-blue-300'
                         :class="{ 'border-red-300 ': submitted && $v.model.activity.$error }")
                         option.text-xs(v-for='activity, idx in options.activities' :key='idx' :value='activity.value') {{ activity.label }}
                 .p-1(class='w-1/3 md:w-1/4')
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.minutes.$error }") Minutes spent:
-                    masked-input.border.w-full.rounded.p-2.text-xs(
+                    masked-input.border.w-full.rounded.p-2.text-xs.text-gray-600(
                         v-model='$v.model.minutes.$model'
                         class='focus:outline-none focus:border-blue-300'
                         :mask='inputMask.minutes'
@@ -81,8 +81,9 @@
                 let entry = Object.assign({}, this.model)
                 entry.date = this.$root.moment(entry.date).format('MM/DD/YYYY')
                 entry.minutes = parseInt(entry.minutes)
-                console.log(entry)
-                // this.$store.commit('addToLogs', entry)
+                this.$store.commit('addToLogs', entry)
+                Object.keys(this.model).forEach(k => this.model[k] = null)
+                this.submitted = false
             }
         }
     }
