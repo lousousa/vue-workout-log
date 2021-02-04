@@ -11,10 +11,12 @@ import router from './router'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
+import MaskedInput from 'vue-text-mask'
 
 Vue.use(Vuex)
 Vue.use(Vuetify, { iconfont: 'mdi' })
 Vue.use(Vuelidate)
+Vue.component('masked-input', MaskedInput)
 
 Vue.config.productionTip = false
 
