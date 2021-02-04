@@ -74,7 +74,7 @@
                 this.submitted = true
                 this.$v.$touch()
                 if (this.$v.$invalid) {
-                    this.$toast.open({ message: 'Please check the input values', type: 'error', position: 'bottom' })
+                    this.$toast.open({ message: 'Please check the input fields', type: 'error', position: 'bottom' })
                     return 0
                 }
 
@@ -84,6 +84,7 @@
                 this.$store.commit('addToLogs', entry)
                 Object.keys(this.model).forEach(k => this.model[k] = null)
                 this.submitted = false
+                this.$toast.open({ message: 'New log added to list', type: 'success', position: 'bottom' })
             }
         }
     }
