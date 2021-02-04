@@ -1,5 +1,5 @@
 import moment from 'moment'
-moment.locale('pt-br')
+moment.locale('en-us')
 
 export default [{
     methods: {
