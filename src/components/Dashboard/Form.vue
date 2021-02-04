@@ -72,7 +72,11 @@
             handleSubmit () {
                 
                 this.submitted = true
-                this.$v.$touch(); if (this.$v.$invalid) return 0
+                this.$v.$touch()
+                if (this.$v.$invalid) {
+                    this.$toast.open({ message: 'Please check the input values', type: 'error', position: 'bottom' })
+                    return 0
+                }
 
                 let entry = Object.assign({}, this.model)
                 entry.date = this.$root.moment(entry.date).format('MM/DD/YYYY')

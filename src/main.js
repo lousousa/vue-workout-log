@@ -3,6 +3,7 @@ import './assets/tailwind.css'
 import './../node_modules/jam-icons/js/jam.min'
 import './../node_modules/jam-icons/css/jam.min.css'
 import '@mdi/font/css/materialdesignicons.css'
+import 'vue-toast-notification/dist/theme-default.css' // alt.: theme-sugar.css
 
 import Vue from 'vue'
 import App from './App.vue'
@@ -12,11 +13,13 @@ import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import Vuelidate from 'vuelidate'
 import MaskedInput from 'vue-text-mask'
+import VueToast from 'vue-toast-notification'
 
 Vue.use(Vuex)
 Vue.use(Vuetify, { iconfont: 'mdi' })
 Vue.use(Vuelidate)
 Vue.component('masked-input', MaskedInput)
+Vue.use(VueToast)
 
 Vue.config.productionTip = false
 
