@@ -3,7 +3,7 @@
         form(@submit.prevent='handleSubmit')
             h1.text-center.text-xs.text-gray-400 INSERT AN ITEM
             .flex.flex-wrap.items-end
-                .p-1(class='w-1/4')
+                .p-1(class='w-1/3 md:w-1/4')
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.date.$error }") Date:
                     DatePicker(v-model='$v.model.date.$model' locale='en')
                         template(v-slot="{ inputValue, inputEvents }")
@@ -12,14 +12,14 @@
                                 :class="{ 'border-red-300 ': submitted && $v.model.date.$error }"
                                 :value='inputValue'
                                 v-on='inputEvents')
-                .p-1(class='w-1/4')
+                .p-1(class='w-1/3 md:w-1/4')
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.activity.$error }") Activity:
                     select.border.w-full.rounded.p-2.text-xs.cursor-pointer(
                         v-model='$v.model.activity.$model'
                         class='focus:outline-none focus:border-blue-300'
                         :class="{ 'border-red-300 ': submitted && $v.model.activity.$error }")
                         option.text-xs(v-for='activity, idx in options.activities' :key='idx' :value='activity.value') {{ activity.label }}
-                .p-1(class='w-1/4')
+                .p-1(class='w-1/3 md:w-1/4')
                     label.text-gray-600.text-xs(:class="{ 'text-red-400 ': submitted && $v.model.minutes.$error }") Minutes spent:
                     masked-input.border.w-full.rounded.p-2.text-xs(
                         v-model='$v.model.minutes.$model'
@@ -27,7 +27,7 @@
                         :mask='inputMask.minutes'
                         :class="{ 'border-red-300 ': submitted && $v.model.minutes.$error }"
                         :guide='false')
-                .p-1(class='w-1/4')
+                .p-1(class='w-full md:w-1/4')
                     button.text-xs.w-full.bg-turquoise-100.rounded.p-2.border.border-turquoise-200.text-turquoise-500(class='focus:outline-none' type='submit') Add
 </template>
 

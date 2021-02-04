@@ -1,5 +1,5 @@
 <template lang='pug'>
-    .max-w-2xl.mx-auto.my-4.border.rounded.bg-white
+    .max-w-2xl.mx-auto.bg-white(class='md:my-4 md:border md:rounded')
         .p-4.border-b
             h1.font-bold.text-sm.text-center.text-turquoise-200 Workout Log
         .p-4.border-b
