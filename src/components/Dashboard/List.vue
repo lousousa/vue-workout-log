@@ -3,10 +3,10 @@
         .p-4(v-if='! list.length')
             p.text-center.text-xs.text-gray-600 You have no log.
         .p-4(v-else)
-            .border.rounded
+            .flex.flex-wrap.border.rounded
                 .w-full.text-center.text-xs.p-2.text-gray-400.border-b
                     h1 LOGS
-                .flex.flex-wrap.items-center.bg-gray-100.border-b
+                .w-full.flex.flex-wrap.items-center.bg-gray-100.border-b
                     .flex.items-center.justify-center.text-center.p-1.text-gray-600.font-bold.cursor-pointer(class='w-1/4' @click="sort('date')")
                         .text-xs Date
                         .ml-2.text-md
@@ -20,7 +20,7 @@
                         .ml-2.text-md
                             i.jam(:class="{ 'jam-chevron-square-down': sortBy.minutes === -1, 'jam-chevron-square-up': sortBy.minutes === 1 }")
                     div(class='w-1/4')
-                .flex.flex-wrap.items-center(v-for='log, idx in getPaginatedList()' :key='idx')
+                .w-full.flex.flex-wrap.items-center(v-for='log, idx in getPaginatedList()' :key='idx')
                     .text-center.p-2(class='w-1/4')
                         p.text-xs.text-gray-600 {{ log.date }}
                     .text-center.p-2(class='w-1/4')
@@ -30,7 +30,7 @@
                     .text-center.p-2(class='w-1/4')
                         a(href='javascript:;' @click='removeItem(idx)')
                             i.jam.jam-trash.text-gray-600
-                .flex.justify-center.items-center.bg-gray-100.border-t.p-2
+                .w-full.flex.justify-center.items-center.bg-gray-100.border-t.p-2
                     a.flex.items-center.justify-center.w-5.h-5.mx-1.text-md.text-green-600.font-bold(v-if='pagination.currentPage > 1'
                         href='javascript:;'
                         @click='pagination.currentPage--')
@@ -44,8 +44,10 @@
                         href='javascript:;'
                         @click='pagination.currentPage++')
                         i.jam.jam-chevron-right
-                .w-full.text-center.text-xs.p-2.text-gray-600.border-t
-                    p Total spent: <b>{{ list.map(log => log.minutes).reduce((sum, val) => sum + val) }} min</b>
+                .text-left.text-xs.p-2.text-gray-600.border-t(class='w-1/2')
+                    p Total logs: <b>{{ list.length }}</b>
+                .text-right.text-xs.p-2.text-gray-600.border-t(class='w-1/2')
+                    p Total time spent: <b>{{ list.map(log => log.minutes).reduce((sum, val) => sum + val) }} min</b>
 </template>
 
 <script>
