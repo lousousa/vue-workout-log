@@ -78,11 +78,13 @@
                 Object.keys(this.sortBy).forEach(key => {
                     if (this.sortBy[key] === 1) {
                         sorted.sort((a, b) => {
-                            return a[key] >= b[key] ? 1 : -1
+                            if (key === 'date') return this.$root.moment(a[key], 'MM/DD/YYYY') >= this.$root.moment(b[key], 'MM/DD/YYYY') ? 1 : -1
+                            else return a[key] >= b[key] ? 1 : -1
                         })
                     } else if (this.sortBy[key] === -1) {
                         sorted.sort((a, b) => {
-                            return a[key] <= b[key] ? 1 : -1
+                            if (key === 'date') return this.$root.moment(a[key], 'MM/DD/YYYY') <= this.$root.moment(b[key], 'MM/DD/YYYY') ? 1 : -1
+                            else return a[key] <= b[key] ? 1 : -1
                         })
                     }
                 })
