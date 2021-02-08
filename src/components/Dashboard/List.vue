@@ -24,8 +24,20 @@
                     .text-center.p-2(class='w-1/4')
                         a(href='javascript:;' @click='removeItem(idx)')
                             i.jam.jam-trash.text-gray-600
-                .text-center.items-center.bg-gray-100.border-t.p-2
-                    a.mx-2.text-xs.text-green-600.font-bold(v-for='page, idx in getPagesArray()' :key='idx' href='javascript:;' @click='pagination.currentPage = page') {{ page }}
+                .flex.justify-center.items-center.bg-gray-100.border-t.p-2
+                    a.flex.items-center.justify-center.w-5.h-5.mx-2.text-md.text-green-600.font-bold(v-if='pagination.currentPage > 1'
+                        href='javascript:;'
+                        @click='pagination.currentPage--')
+                        i.jam.jam-chevron-left
+                    a.flex.items-center.justify-center.rounded-full.w-5.h-5.mx-2.text-xs.font-bold(v-for='page, idx in getPagesArray()'
+                        :key='idx'
+                        href='javascript:;'
+                        @click='pagination.currentPage = page'
+                        :class="{ 'bg-turquoise-200 text-white': pagination.currentPage === page, 'text-green-600': pagination.currentPage != page }") {{ page }}
+                    a.flex.items-center.justify-center.w-5.h-5.mx-2.text-md.text-green-600.font-bold(v-if='pagination.currentPage < getPagesArray().length'
+                        href='javascript:;'
+                        @click='pagination.currentPage++')
+                        i.jam.jam-chevron-right
                 .w-full.text-center.text-xs.p-2.text-gray-600.border-t
                     p Total spent: <b>{{ list.map(log => log.minutes).reduce((sum, val) => sum + val) }} min</b>
 </template>
