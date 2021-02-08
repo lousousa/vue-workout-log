@@ -7,6 +7,10 @@
 + Sass
 + Pug
 
+## Demo
+
+[Click me](https://dev.luizard.com/vue-workout-log/)
+
 ## Project setup
 ```
 npm install
